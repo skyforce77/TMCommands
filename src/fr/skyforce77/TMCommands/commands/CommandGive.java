@@ -5,19 +5,20 @@ import fr.skyforce77.towerminer.api.commands.Argument;
 import fr.skyforce77.towerminer.api.commands.Argument.ArgumentType;
 import fr.skyforce77.towerminer.api.commands.Command;
 import fr.skyforce77.towerminer.menus.MultiPlayer;
-import fr.skyforce77.towerminer.protocol.packets.Packet16Sound;
+import fr.skyforce77.towerminer.menus.SinglePlayer;
 
-public class CommandMusic extends Command {
+public class CommandGive extends Command {
 
 	@Override
 	public void onTyped(String[] args) {
-		args[0] = args[0].replaceAll("https", "http");
+		Integer i = Integer.parseInt(args[0]);
 		
-		if(TowerMiner.menu instanceof MultiPlayer) {
-			Utils.sendAllTCP(new Packet16Sound(0, true, args[0]));
-			Utils.write("Sent music");
+		if(!(TowerMiner.menu instanceof MultiPlayer) && TowerMiner.menu instanceof SinglePlayer) {
+			SinglePlayer sp = (SinglePlayer)TowerMiner.menu;
+			sp.or = sp.or+i;
+			Utils.write("Gived "+i+" golds");
 		} else {
-			Utils.write("This command is multiplayer only");
+			Utils.write("This command is singleplayer only");
 		}
 	}
 	
@@ -31,7 +32,7 @@ public class CommandMusic extends Command {
 	
 	@Override
 	public void onInitialized(String label) {
-		setArguments(new Argument("url", ArgumentType.Url));
+		setArguments(new Argument("amount", ArgumentType.Integer));
 	}
 
 }

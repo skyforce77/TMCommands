@@ -1,4 +1,5 @@
 package fr.skyforce77.TMCommands;
+import fr.skyforce77.TMCommands.commands.CommandGive;
 import fr.skyforce77.TMCommands.commands.CommandMusic;
 import fr.skyforce77.TMCommands.commands.CommandNotif;
 import fr.skyforce77.TMCommands.commands.CommandPlugins;
@@ -22,6 +23,7 @@ public class TMCommands extends Plugin{
 		CommandManager.register("stop", new CommandStop());
 		CommandManager.register("music", new CommandMusic());
 		CommandManager.register("plugins", new CommandPlugins());
+		CommandManager.register("give", new CommandGive());
 	}
 
 }

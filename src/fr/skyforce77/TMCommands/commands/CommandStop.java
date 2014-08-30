@@ -7,8 +7,15 @@ public class CommandStop extends Command {
 
 	@Override
 	public void onTyped(String[] args) {
-		Utils.broadcast("Stopping server...");
-		System.exit(1);
+		Utils.broadcast("Stopping internal server in 10s...");
+		new Thread() {
+			public void run() {
+				try {
+					Thread.sleep(10000l);
+				} catch (InterruptedException e) {}
+				System.exit(1);
+			};
+		}.start();
 	}
 	
 	@Override
