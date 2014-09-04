@@ -1,12 +1,12 @@
 package fr.skyforce77.TMCommands.commands;
 import fr.skyforce77.towerminer.api.PluginManager;
-import fr.skyforce77.towerminer.api.Utils;
 import fr.skyforce77.towerminer.api.commands.Command;
+import fr.skyforce77.towerminer.api.commands.CommandSender;
 
 public class CommandPlugins extends Command {
 
 	@Override
-	public void onTyped(String[] args) {
+	public void onTyped(CommandSender sender, String[] args) {
 		String st = "";
 		int i = 0;
 		for(String s : PluginManager.getPlugins()) {
@@ -16,11 +16,11 @@ public class CommandPlugins extends Command {
 			} else {
 				i = 0;
 				st = st+s+", ";
-				Utils.write(st);
+				sender.sendMessage(st);
 			}
 		}
 		if(i != 0) {
-			Utils.write(st);
+			sender.sendMessage(st);
 		}
 	}
 	

@@ -3,15 +3,16 @@ import fr.skyforce77.towerminer.TowerMiner;
 import fr.skyforce77.towerminer.achievements.Popup;
 import fr.skyforce77.towerminer.api.Utils;
 import fr.skyforce77.towerminer.api.commands.Argument;
-import fr.skyforce77.towerminer.api.commands.Command;
 import fr.skyforce77.towerminer.api.commands.Argument.ArgumentType;
+import fr.skyforce77.towerminer.api.commands.Command;
+import fr.skyforce77.towerminer.api.commands.CommandSender;
 import fr.skyforce77.towerminer.menus.MultiPlayer;
 import fr.skyforce77.towerminer.protocol.packets.Packet12Popup;
 
 public class CommandNotif extends Command {
 
 	@Override
-	public void onTyped(String[] args) {
+	public void onTyped(CommandSender sender, String[] args) {
 		String s = "";
 		for(String arg : args) {
 			if(!s.equals("")) {

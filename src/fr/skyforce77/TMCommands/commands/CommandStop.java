@@ -2,11 +2,12 @@ package fr.skyforce77.TMCommands.commands;
 
 import fr.skyforce77.towerminer.api.Utils;
 import fr.skyforce77.towerminer.api.commands.Command;
+import fr.skyforce77.towerminer.api.commands.CommandSender;
 
 public class CommandStop extends Command {
 
 	@Override
-	public void onTyped(String[] args) {
+	public void onTyped(CommandSender sender, String[] args) {
 		Utils.broadcast("Stopping internal server in 10s...");
 		new Thread() {
 			public void run() {

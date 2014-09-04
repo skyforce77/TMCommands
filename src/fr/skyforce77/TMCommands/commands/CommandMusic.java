@@ -4,20 +4,21 @@ import fr.skyforce77.towerminer.api.Utils;
 import fr.skyforce77.towerminer.api.commands.Argument;
 import fr.skyforce77.towerminer.api.commands.Argument.ArgumentType;
 import fr.skyforce77.towerminer.api.commands.Command;
+import fr.skyforce77.towerminer.api.commands.CommandSender;
 import fr.skyforce77.towerminer.menus.MultiPlayer;
 import fr.skyforce77.towerminer.protocol.packets.Packet16Sound;
 
 public class CommandMusic extends Command {
 
 	@Override
-	public void onTyped(String[] args) {
+	public void onTyped(CommandSender sender, String[] args) {
 		args[0] = args[0].replaceAll("https", "http");
 		
 		if(TowerMiner.menu instanceof MultiPlayer) {
 			Utils.sendAllTCP(new Packet16Sound(0, true, args[0]));
-			Utils.write("Sent music");
+			sender.sendMessage("Sent music");
 		} else {
-			Utils.write("This command is multiplayer only");
+			sender.sendMessage("This command is multiplayer only");
 		}
 	}
 	
