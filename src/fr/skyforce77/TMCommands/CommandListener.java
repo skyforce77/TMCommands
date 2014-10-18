@@ -19,6 +19,7 @@ public class CommandListener extends TMListener{
 	public void onMenuUsed(MenuUsedEvent e) {
 		if(e.getMenu().getClass().equals(SinglePlayer.class)) {
 			SinglePlayer sp = ((SinglePlayer)e.getMenu());
+			sp.chatmenu.setVisible(true);
 			sp.chatfield.setVisible(true);
 	        sp.enablechat.setVisible(true);
 		}
