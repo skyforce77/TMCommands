@@ -1,27 +1,32 @@
 package fr.skyforce77.TMCommands.commands;
+import java.awt.Color;
+
+import fr.skyforce77.towerminer.api.Plugin;
 import fr.skyforce77.towerminer.api.PluginManager;
 import fr.skyforce77.towerminer.api.commands.Command;
 import fr.skyforce77.towerminer.api.commands.CommandSender;
+import fr.skyforce77.towerminer.protocol.chat.ChatMessage;
+import fr.skyforce77.towerminer.protocol.chat.ChatModel;
+import fr.skyforce77.towerminer.protocol.chat.MessageModel;
 
 public class CommandPlugins extends Command {
 
 	@Override
 	public void onTyped(CommandSender sender, String[] args) {
-		String st = "";
+		ChatMessage message = new ChatMessage("Plugins: ");
 		int i = 0;
 		for(String s : PluginManager.getPlugins()) {
-			if(i < 2) {
-				i++;
-				st = st+s+", ";
-			} else {
-				i = 0;
-				st = st+s+", ";
-				sender.sendMessage(st);
-			}
+			Plugin p = PluginManager.getPlugin(s);
+			ChatModel model = new ChatModel(p.getName());
+			model.setMouseModel(new MessageModel("v"+p.getVersion()));
+			message.addModel(model);
+			message.addModel(new ChatModel(" "));
 		}
 		if(i != 0) {
-			sender.sendMessage(st);
+			message = new ChatMessage("Nothing to see");
+			message.getModels().get(0).setForegroundColor(Color.RED);
 		}
+		sender.sendMessage(message);
 	}
 	
 	@Override

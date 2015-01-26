@@ -39,6 +39,7 @@ public class CommandNotif extends Command {
 	
 	@Override
 	public void onInitialized(String label) {
+		setAlias("notify-send");
 		setArguments(new Argument("text", ArgumentType.String));
 	}
 
