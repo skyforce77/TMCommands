@@ -1,7 +1,7 @@
 package fr.skyforce77.TMCommands.commands;
 import fr.skyforce77.towerminer.TowerMiner;
 import fr.skyforce77.towerminer.achievements.Popup;
-import fr.skyforce77.towerminer.api.Utils;
+import fr.skyforce77.towerminer.api.PluginUtils;
 import fr.skyforce77.towerminer.api.commands.Argument;
 import fr.skyforce77.towerminer.api.commands.Argument.ArgumentType;
 import fr.skyforce77.towerminer.api.commands.Command;
@@ -23,7 +23,7 @@ public class CommandNotif extends Command {
 		}
 		
 		if(TowerMiner.menu instanceof MultiPlayer) {
-			Utils.sendAllTCP(new Packet12Popup(s));
+			PluginUtils.sendAllTCP(new Packet12Popup(s));
 		} else {
 			new Popup(s, 8000);
 		}
